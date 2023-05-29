@@ -22,6 +22,7 @@ const resetCounter = () => {
   localStorage.setItem('left_score', leftScore.value.toString());
   localStorage.setItem('right_score', rightScore.value.toString());
   resetQuestion.value = false;
+
 }
 
 </script>
