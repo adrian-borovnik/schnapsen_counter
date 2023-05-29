@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .button {
+        @apply py-4 px-12 text-2xl text-white font-semibold rounded-md duration-150
+    }
+}
