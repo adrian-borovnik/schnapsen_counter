@@ -4,16 +4,23 @@ import {ref} from "vue";
 let leftScore = ref(parseInt(localStorage.getItem('left_score')) || 0)
 let rightScore = ref(parseInt(localStorage.getItem('right_score')) || 0)
 
-let resetQuestion = ref(false);
+let resetQuestion = ref(false)
+let winner = ref(false)
+
+if (leftScore.value >= 7 || rightScore.value >= 7) winner.value = true;
 
 const incrementLeft = (value) => {
+  if (winner.value) return;
   leftScore.value += value
   localStorage.setItem('left_score', leftScore.value.toString());
+  if (leftScore.value >= 7) winner.value = true;
 }
 
 const incrementRight = (value) => {
+  if (winner.value) return;
   rightScore.value += value;
   localStorage.setItem('right_score', rightScore.value.toString());
+  if (rightScore.value >= 7) winner.value = true;
 }
 
 const resetCounter = () => {
@@ -22,7 +29,7 @@ const resetCounter = () => {
   localStorage.setItem('left_score', leftScore.value.toString());
   localStorage.setItem('right_score', rightScore.value.toString());
   resetQuestion.value = false;
-
+  winner.value = false;
 }
 
 </script>
@@ -31,6 +38,7 @@ const resetCounter = () => {
   <main
       class="w-screen h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col justify-center items-center font-lato select-none">
     <h1 class="text-white text-4xl">Schnapsen counter</h1>
+
     <div class="w-screen flex justify-center items-center space-x-32">
 
       <div class="flex flex-col justify-between space-y-6">
@@ -74,9 +82,16 @@ const resetCounter = () => {
 
       <button
           class="text-slate-700 px-6 py-2"
-          v-if="resetQuestion === false"
+          v-if="!resetQuestion && !winner"
           @click="resetQuestion = true"
       >Reset
+      </button>
+
+      <button
+          class="px-6 py-2 bg-gradient-to-br from-emerald-700 to-green-700 rounded-sm hover:scale-105 duration-150"
+          v-if="winner"
+          @click="resetCounter"
+      >New Game
       </button>
 
       <div
