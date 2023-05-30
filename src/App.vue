@@ -79,7 +79,7 @@ const resetCounter = () => {
       </div>
 
     </div>
-    <div class="text-white h-8">
+    <div class="text-white h-8 mt-8">
 
       <button
           class="text-slate-700 px-6 py-2"
