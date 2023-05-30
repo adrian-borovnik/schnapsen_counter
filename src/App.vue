@@ -36,10 +36,10 @@ const resetCounter = () => {
 
 <template>
   <main
-      class="w-screen h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col justify-center items-center font-lato select-none">
-    <h1 class="text-white text-4xl">Schnapsen counter</h1>
+      class="relative w-screen h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col justify-center items-center font-lato select-none">
+    <h1 class="text-white xl:text-6xl text-4xl mb-12">Schnapsen counter</h1>
 
-    <div class="w-screen flex justify-center items-center space-x-32">
+    <div class="w-screen flex justify-center items-center xl:space-x-36 lg:space-x-24 md:space-x-16 space-x-8">
 
       <div class="flex flex-col justify-between space-y-6">
         <button
@@ -56,10 +56,11 @@ const resetCounter = () => {
         </button>
       </div>
 
-      <div class="w-1/2 flex justify-evenly text-[16rem] text-white">
-        <span class="w-full text-center">{{ leftScore }}</span>
+      <div
+          class="flex justify-around xl:text-[16rem] lg:text-[12rem] md:text-[8rem] sm:text-[6rem] text-6xl text-white">
+        <span class="w-full text-center px-8">{{ leftScore }}</span>
         <span>-</span>
-        <span class="w-full text-center">{{ rightScore }}</span>
+        <span class="w-full text-center px-8">{{ rightScore }}</span>
       </div>
 
       <div class="flex flex-col justify-between space-y-6">
@@ -113,5 +114,14 @@ const resetCounter = () => {
         </div>
       </div>
     </div>
+    <a
+        class="flex absolute bottom-0 right-0 px-4 py-2 text-white font-lato text-lg"
+        href="https://github.com/adrian-borovnik"
+        target="_blank"
+    >
+      <img
+          class="invert mr-2"
+          src="../public/github.svg" alt="github">
+      Adrian Borovnik</a>
   </main>
 </template>
