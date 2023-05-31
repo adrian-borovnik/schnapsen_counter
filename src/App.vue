@@ -85,32 +85,31 @@ const resetCounter = () => {
           class="text-slate-700 px-6 py-2"
           v-if="!resetQuestion && !winner"
           @click="resetQuestion = true"
-      >Reset
-      </button>
+      >Reset</button>
 
       <button
           class="px-6 py-2 bg-gradient-to-br from-emerald-700 to-green-700 rounded-sm hover:scale-105 duration-150"
           v-if="winner"
           @click="resetCounter"
-      >New Game
-      </button>
+      >New Game</button>
 
       <div
           class="flex flex-col justify-center items-center space-y-4"
-          v-if="resetQuestion"
+          v-if="resetQuestion && !winner"
       >
         <p>Do you really want to reset?</p>
         <div class="space-x-4">
+
           <button
               class="px-6 py-2 bg-gradient-to-br from-pink-800 to-red-700 rounded-sm hover:scale-105 duration-150"
               @click="resetCounter"
-          >Yes
-          </button>
+          >Yes</button>
+
           <button
               class="px-6 py-2 bg-gradient-to-br from-emerald-700 to-green-800 rounded-sm hover:scale-105 duration-150"
               @click="resetQuestion = false"
-          >No
-          </button>
+          >No</button>
+
         </div>
       </div>
     </div>
